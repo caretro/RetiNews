@@ -1,0 +1,4 @@
+<h1>Home</h1>
+
+<p *ngIf="news?.length === 0">Non c'è ancora nessuna news...</p>
+<app-news-widget *ngFor="let n of news; let i=index; let odd=odd;" [news]="n" [attr.data-index]="i" [ngClass]="{'odd': odd, 'even': !odd}"></app-news-widget>

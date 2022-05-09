@@ -1,0 +1,11 @@
+<div>
+    <h2>{{news?.title}}</h2>
+
+    <p>{{news?.description}}</p>
+
+    <small>{{news?.publishDate | date:'EEEE dd/MM/yyyy' | uppercase}}</small>
+
+    <blockquote>Autore {{news?.author | nullable:'Anonimo'}}</blockquote>
+
+    <a *ngIf="showLink" [routerLink]="['/news', news.id]">Vai al dettaglio</a>
+</div>

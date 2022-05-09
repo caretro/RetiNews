@@ -1,0 +1,28 @@
+<h2>Admin</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Titolo: </label>
+        <input type="text" formControlName="title" />
+        <span *ngIf="form.get('title')?.errors?.required && form.get('title')?.touched">Titolo obbligatorio</span>        
+    </div>
+    <div>
+        <label>Descrizione: </label>
+        <input type="text" formControlName="description" />
+        <span *ngIf="form.get('description')?.errors?.required && form.get('description')?.touched">Descrizione
+            obbligatoria</span>
+        <span *ngIf="form.get('description')?.errors?.forbidden && form.get('description')?.touched">Non puoi scrivere
+            {{form.get('description')?.errors?.forbidden?.value}}!</span>
+    </div>
+    <div>
+        <label>Data pubblicazione: </label>
+        <input type="date" formControlName="publishDate" />
+        <span *ngIf="form.get('publishDate')?.errors?.required && form.get('description')?.touched">Data pubblicazione
+            obbligatoria</span>        
+    </div>
+    <div>
+        <label>Autore: </label>
+        <input type="text" formControlName="author" />
+    </div>
+    <button type="submit" [disabled]="form.invalid">Salva</button>
+</form>
