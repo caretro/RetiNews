@@ -11,6 +11,7 @@ import { NewsService } from './services/news.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
 import { NewsDetailComponent } from './pages/news-detail/news-detail.component';
+import { ConfirmUpdateGuard } from './guards/confirm-update.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NewsDetailComponent } from './pages/news-detail/news-detail.component';
   ],
   providers: [
     ProfileService,
-    NewsService
+    NewsService,
+    ConfirmUpdateGuard
   ],
   bootstrap: [AppComponent]
 })

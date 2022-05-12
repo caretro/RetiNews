@@ -7,5 +7,7 @@
 
     <blockquote>Autore {{news?.author | nullable:'Anonimo'}}</blockquote>
 
+    <p>TAG: <span *ngFor="let t of news?.tags">{{ t }}; </span></p>
+
     <a *ngIf="showLink" [routerLink]="['/news', news.id]">Vai al dettaglio</a>
 </div>

@@ -4,7 +4,7 @@
     <div>
         <label>Titolo: </label>
         <input type="text" formControlName="title" />
-        <span *ngIf="form.get('title')?.errors?.required && form.get('title')?.touched">Titolo obbligatorio</span>        
+        <span *ngIf="form.get('title')?.errors?.required && form.get('title')?.touched">Titolo obbligatorio</span>
     </div>
     <div>
         <label>Descrizione: </label>
@@ -23,6 +23,15 @@
     <div>
         <label>Autore: </label>
         <input type="text" formControlName="author" />
+        <!-- <span *ngIf="form.get('tags')?.errors?.missingAuthor && form.get('tags')?.touched">Autore obbligatorio se hai inserito tag</span> -->
+    </div>
+    <div formArrayName="tags">
+        <label>Tags: </label>
+        <button type="button" (click)="addTag()">Aggiungi tag</button>
+        <div *ngFor="let t of tags.controls; index as i">
+            <input type="text" [formControlName]="i" />
+        </div>
+        <span *ngIf="form.get('tags')?.errors?.duplicate && form.get('tags')?.touched">Ci sono tag duplicati</span>
     </div>
     <button type="submit" [disabled]="form.invalid">Salva</button>
 </form>

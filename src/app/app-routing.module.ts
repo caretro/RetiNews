@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { ConfirmUpdateGuard } from './guards/confirm-update.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsDetailComponent } from './pages/news-detail/news-detail.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
-  { path: "admin", component: AdminComponent, canActivate: [AuthGuard] },
+  { path: "admin", component: AdminComponent, canActivate: [AuthGuard], canDeactivate: [ConfirmUpdateGuard] },
   // { path: "home", loadChildren: () => import("./pages/home/home.module").then(m => m.HomeModule) },
   // { path: "admin", loadChildren: () => import("./pages/admin/admin.module").then(m => m.AdminModule) },
   { path: "news/:id", component: NewsDetailComponent },
