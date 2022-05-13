@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.news = this.newsService.getNews().slice(0, 5);
+    this.news = this.newsService.getNews().sort((x,y)=> (y.publishDate.getDate() - x.publishDate.getDate())).slice(0, 5);
   }
 
 }

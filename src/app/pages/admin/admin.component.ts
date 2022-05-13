@@ -28,7 +28,9 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit() {
-    this.newsService.addNews(this.form.value as News);
+    let n = this.form.value as News;
+    n.publishDate = new Date(this.form.get("publishDate")?.value); // inserito per trasformare in Date il valore restituito come stringa dalla form. Si possono usare anche altri metodi :)
+    this.newsService.addNews(n);
     this.form.controls["tags"] = new FormArray([]);
     this.tags.setValidators(CustomValidators.tagsValidator())
     this.form.reset();    
